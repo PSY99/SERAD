@@ -1,17 +1,12 @@
-'''
-Author: lza 1342011793@qq.com
-Date: 2024-11-14 16:15:23
-LastEditors: lza 1342011793@qq.com
-LastEditTime: 2024-11-14 16:20:03
-FilePath: /MLFAD/log_parse/bash/cmd_parse.py
-Description: 解析bash命令的规则
-'''
 import re
 import bashlex
 
+# The Parse_cmd class is designed to analyze and parse command-line commands,
+# extract critical information (e.g., command type, arguments, sensitive operations),
+# and classify commands based on their purpose or potential risk level.
 class Parse_cmd():
     """
-    对如下命令进行了提前解析：
+    The following command has been pre parsed:
     useful_command = ["ssh", "sshuttle", "nmap", "apt", "apt-get", "docker", "curl", "vim", "cat", "sed", "dpkg", "wget", "mv", "mkdir", "python", "./", "john", "nc", "ping", "crackmapexec", "dirb", "mongo", "bsondump", "gcc", "locate", "nano", "chmod", "find", "brew", "rm", "bash", "su", "ping", "git"]
     """
     def __init__(self, cmd):
@@ -88,18 +83,18 @@ class Parse_cmd():
             matches = pattern.findall(arg)
             if matches:
                 option = matches[0][0]
-                if matches[0][1]:  # 处理形如--option=value的参数
+                if matches[0][1]:  # process parameters like -- option=value
                     param = matches[0][1].strip('=')
                     parsed_args.append((option, param))
                     i += 1
-                elif i+1 < len(args) and not re.match(pattern, args[i+1]): # 处理形如-option value的参数
+                elif i+1 < len(args) and not re.match(pattern, args[i+1]): 
                     param = args[i+1]
                     parsed_args.append((option, param))
                     i += 2
                 else:
-                    parsed_args.append((option, None)) # 处理没有参数的情况，例如命令"ls -l"
+                    parsed_args.append((option, None)) # Handling situations without parameters, such as the command 'ls - l'
                     i += 1
-            else:  # 处理没有明显命令行参数前缀的参数
+            else:  # Processing parameters without obvious command line parameter prefixes
                 parsed_args.append((none_flag, arg))
                 none_flag += 1
                 i += 1
@@ -147,15 +142,6 @@ class Parse_cmd():
         
     
     def parse_nmap(self):
-        # pattern = r"(\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}(?:/[0-9]{1,2})?\b)"
-        # match = re.search(pattern, nmap_command)
-        # entity_list = []
-        # if match:
-        #     ip_and_mask = match.group(1)
-        #     entity_list.append(ip_and_mask)
-        # else:
-        #     entity_list = None
-        # return entity_list
         entity_list = []
         pattern = r"(\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}(?:/[0-9]{1,2})?\b)"
 
@@ -187,7 +173,6 @@ class Parse_cmd():
         else:
             return None
     
-    # docker命令比较复杂，而且和其他命令没有联系，暂时不处理
     def parse_docker(self, docker_command):
         entity_list = []
         for arg in self.parsed_args[1:]:
@@ -211,13 +196,9 @@ class Parse_cmd():
             pattern1 = r"\s+(http(?:s)?://[^\s]+)"
             links = re.findall(pattern1, web_command)
             return links
-        
-    # def parse_second(second_command):
-    #     # vim, cat, touch, mkdir, john, ping, locate, nano, brew
-    #     return second_command.split(" ")[1]
     
     def parse_wget(self, wget_command):
-        # 正则表达式匹配链接最后的文件名
+        # Regular expression matches the last file name of the link
         pattern = r"/([^/\s]*)(?=\s|$)"
 
         # 使用 search 方法寻找匹配的字符串
@@ -228,10 +209,10 @@ class Parse_cmd():
             return None
         
     def parse_mv(self, mv_command):
-        # 正则表达式匹配 mv 命令的源文件和目标文件
+        # Match the source and target files of the mv command using regular expressions
         pattern = r"mv\s+(.*?)\s+(.*)"
 
-        # 使用 search 方法寻找匹配的字符串
+        # Using the search method to find matching strings
         match = re.search(pattern, mv_command)
         if match:
             return [match.group(1), match.group(2)]
@@ -268,10 +249,9 @@ class Parse_cmd():
             return None
 
     def parse_git(self, git_command):
-        # 正则表达式匹配git clone命令
+        # Regular expression matching git clone command
         pattern = r"git(?:\s+)clone(?:\s+)https://github.com/\w+/([\w-]+)(?:\.git)?(\s+(.*))?"
 
-        # 使用search方法找到匹配的字符串
         match = re.search(pattern, git_command)
         if match:
             project = match.group(1)
