@@ -9,26 +9,39 @@ We propose a **dynamic graph-based attack detection method** for **multi-source 
 
 In this repository, we provide:
 
-- A description of the **attack scenarios** in our **laboratory-collected dataset**.
+- The **Loghub dataset** and a description of attack scenarios in our **laboratory-collected dataset**.
 - The **shell command parsing method** used in our approach.
 - A **port-to-service mapping table** for reference.
 
-## Laboratory-Collected Dataset
+## Datasets
+
+Our evaluation utilizes two distinct datasets:
+
+1. **Loghub Dataset** – A publicly available **large-scale system log collection** for AI-driven log analytics research.
+2. **Laboratory-Collected Dataset** – A dataset collected in a controlled testbed, containing **crafted attack scenarios** for security analysis.
+
+### Loghub  dataset:
+
+The **Loghub dataset** provides **real-world system logs** from **distributed systems, supercomputers, operating systems, mobile systems, and server applications**. It is widely used for **log analysis, anomaly detection, and security research**.
+
+- The dataset can be accessed from: 🔗 [logpai/loghub: A Large Collection of System Log Datasets for AI-Driven Log Analytics [ISSRE'23\]](https://github.com/logpai/loghub)
+
+### Laboratory-Collected Dataset:
 
 - **Download** and unzip the dataset from [Google Drive](https://bit.ly/40WNDcn).
-
   - The `savestore.csv` file contains **application logs** exported from **Elasticsearch**, including `.bash_history` and `auth.log`.
-
+  
   - **Raw network traffic** from involved hosts is stored in separate folders.
-
+  
   - Our dataset includes **two attack scenarios**, each consisting of **ten attack steps**.
+  
 
 - For details on scenario design, attack step descriptions, and corresponding time windows, refer to:
-   [📄 Attack Steps Documentation](attack_step.md)
+   [📄 Attack Steps Documentation (attack_step.md)](attack_step.md)
 
 ## Shell Command Parsing Rules
 
-We developed a [📌**rule-based shell command parser**](cmd_parse.py) to analyze command-line inputs, extract key entities, and classify commands based on their function and potential security risks.
+We developed a [📌**rule-based shell command parser** (cmd_parse.py)](cmd_parse.py) to analyze command-line inputs, extract key entities, and classify commands based on their function and potential security risks.
 
 The **`Parse_cmd` class** is designed to:
 
