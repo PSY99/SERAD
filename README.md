@@ -24,7 +24,7 @@ Our evaluation utilizes two distinct datasets:
 
 The **Loghub dataset** provides **real-world system logs** from **distributed systems, supercomputers, operating systems, mobile systems, and server applications**. It is widely used for **log analysis, anomaly detection, and security research**.
 
-- The dataset can be accessed from: 🔗 [logpai/loghub: A Large Collection of System Log Datasets for AI-Driven Log Analytics [ISSRE'23\]](https://github.com/logpai/loghub)
+- The dataset can be accessed from: 🔗 [logpai/loghub: A Large Collection of System Log Datasets for AI-Driven Log Analytics](https://github.com/logpai/loghub)
 
 ### Laboratory-Collected Dataset:
 
