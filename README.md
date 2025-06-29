@@ -1,11 +1,11 @@
-# Dynamic-Graph-based-Attack-Detection-using-Multi-Source-Heterogeneous-Security-Logs-in-ICS
+# SERDGRAD: Semantic Event Reconstruction for Dynamic Graph-based Attack Detection
 
 
 ![framework](assets\framework.png)
 
-This repository provides the **public resources** associated with the research paper:  **"Dynamic Graph-Based Attack Detection Using Multi-Source Heterogeneous Security Logs in ICS"**.
+This repository provides the **public resources** associated with the research paper:  **"SERDGRAD: Semantic Event Reconstruction for Dynamic Graph-based Attack Detection"**.
 
-We propose a **dynamic graph-based attack detection method** for **multi-source heterogeneous security logs** in **industrial control systems (ICS)**.
+We propose a **dynamic graph-based attack detection method** for **multi-source heterogeneous security logs**.
 
 In this repository, we provide:
 
@@ -35,7 +35,6 @@ The **Loghub dataset** provides **real-world system logs** from **distributed sy
   
   - Our dataset includes **two attack scenarios**, each consisting of **ten attack steps**.
   
-
 - For details on scenario design, attack step descriptions, and corresponding time windows, refer to:
    [📄 Attack Steps Documentation (attack_step.md)](attack_step.md)
 
