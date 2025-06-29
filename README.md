@@ -1,7 +1,7 @@
 # SERDGRAD: Semantic Event Reconstruction for Dynamic Graph-based Attack Detection
 
 
-![framework](assets\framework.png)
+![framework](./assets/framework.png)
 
 This repository provides the **public resources** associated with the research paper:  **"SERDGRAD: Semantic Event Reconstruction for Dynamic Graph-based Attack Detection"**.
 
