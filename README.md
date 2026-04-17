@@ -11,6 +11,8 @@ In this repository, we provide:
 
 - The **Loghub dataset** and a description of attack scenarios in our **laboratory-collected dataset**.
 - The **shell command parsing method** used in our approach.
+- The **event-tag fusion prompt template** for multi-source security behavior summarization.
+- A **network alarm normalization example** for heterogeneous alert schemas.
 - A **port-to-service mapping table** for reference.
 
 ## Datasets
@@ -48,11 +50,31 @@ The **`Parse_cmd` class** is designed to:
 - **Identify sensitive operations**, such as privilege escalation (`sudo`) and remote execution (`ssh`).
 - **Classify commands** into categories like **file operations, networking, system management, and security-related activities**.
 
+## Security Behavior Fusion Prompt
+
+We provide an [📌**ICIO prompt template** (`fusion_prompt.py`)](fusion_prompt.py) for fusing heterogeneous evidence into a concise, event-oriented security tag.
+
+The template emphasizes:
+
+- **Source confidence weighting** (network signatures > host templates > command traces).
+- **Cross-source correlation** to keep tags consistent and meaningful across similar events.
+- **Actionable event naming** focused on attack behavior (e.g., reconnaissance, exploitation, lateral movement).
+
+## Network Alarm Normalization
+
+The [📌**network normalization module** (`network_normalization.py`)](network_normalization.py) provides a compact rule-based example to normalize heterogeneous alarm fields into a shared schema.
+
+It includes:
+
+- A **shared alarm schema** definition.
+- A **field mapping dictionary** for common source variations.
+- **Protocol/port type normalization** and optional service enrichment using `port_service.csv`.
+
 ## Port-to-Service Mapping Table
 
 The [**Port-to-Service Mapping Table**](port_service.csv) provides a reference for commonly assigned ports and their associated protocols and services. Each row represents a **specific port number**, detailing its assignment across different transport protocols (**TCP, UDP, SCTP, DCCP**) and a brief **description** of its function.
 
-The table structure is as followed:
+The table structure is as follows:
 
 | Column Name     | Description                                                  |
 | --------------- | ------------------------------------------------------------ |
