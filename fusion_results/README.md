@@ -8,8 +8,8 @@ Each CSV contains descriptions and annotations for the same 462 event candidates
 | --- | --- |
 | [Qwen3-30B](annotation_report_qwen3_30b_a3b_instruct_2507.csv) | `qwen3-30b-a3b-instruct-2507` |
 | [Qwen3-235B](annotation_report_qwen3_235b_a22b_instruct_2507.csv) | `qwen3-235b-a22b-instruct-2507` |
-| [DeepSeek](annotation_report_deepseek_v3_2.csv) | `deepseek-v3.2` |
-| [Gemini Pro](annotation_report_gemini_3_pro_preview.csv) | `gemini-3-pro-preview` |
+| [DeepSeek-V3.2](annotation_report_deepseek_v3_2.csv) | `deepseek-v3.2` |
+| [Gemini-3-Pro-Preview](annotation_report_gemini_3_pro_preview.csv) | `gemini-3-pro-preview` |
 | [Gemini Flash](annotation_report_gemini_2_5_flash.csv) | `gemini-2.5-flash` |
 | [GPT-4o](annotation_report_gpt_4o.csv) | `gpt-4o` |
 
