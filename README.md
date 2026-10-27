@@ -50,3 +50,20 @@ The `Parse_cmd` class in [cmd_parse.py](cmd_parse.py) extracts command types and
 The prompt in [fusion_prompt.py](fusion_prompt.py) follows the Instruction, Context, Input, and Output structure. It combines alarm signatures, command information, and log templates into a short event description.
 
 [network_normalization.py](network_normalization.py) maps alarm fields to a shared schema and normalizes protocols and ports. [port_service.csv](port_service.csv) supplies the associated service information. Its columns are `Port`, `TCP`, `UDP`, `SCTP`, `DCCP`, and `Description`.
+
+### Running the examples
+
+The examples use Python 3. The command parser also requires `bashlex`:
+
+```bash
+python -m pip install bashlex
+```
+
+Run the examples from the repository root so that the normalization example can read `port_service.csv`:
+
+```bash
+python cmd_parse.py
+python network_normalization.py
+```
+
+These commands parse example records without training a model or calling an LLM. `fusion_prompt.py` contains the prompt template.
